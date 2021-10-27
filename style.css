@@ -1,3 +1,43 @@
+Body {
+  background-color: black;
+}
+h1 {
+  background-color: rgb(82, 83, 83);
+  text-align: center;
+  width: 25%;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid whitesmoke;
+  border-radius: 5px;
+}
+h1:hover {
+  font-size: 2.5rem;
+}
 #root {
-  color: red;
+  background-color: rgb(43, 42, 42);
+  color: white;
+}
+.cards-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  border: 1px solid whitesmoke;
+}
+.single-card {
+  padding: 10px;
+  width: 250px;
+  margin: 15px;
+  background-color: rgb(93, 95, 95);
+  border: 1px solid whitesmoke;
+  border-radius: 7px;
+}
+.card-heading {
+  margin-top: 0%;
+  border: 2px solid white;
+  background-color: rgb(3, 3, 3);
+  border-radius: 5px;
+  padding: 3px;
+}
+.card-heading:hover {
+  font-size: 1.7rem;
 }
