@@ -1,15 +1,30 @@
 //You can edit ALL of the code here
-const allEpisodes = getAllEpisodes();
+//const allEpisodes = getAllEpisodes();
 let allCardsDiv = document.createElement("div");
 let bodyEl = document.querySelector("body");
 let dropDown = document.getElementById("drop-down");
-
+let allEpisodes;
 function setup() {
-  createCardsWrapper();
-  dropDownMenu();
-  makeEpisodes(allEpisodes);
-  numberOfDisplayedEpisodes(allEpisodes);
-  showFooter();
+  fetch("https://api.tvmaze.com/shows/22036/episodes")
+    .then(function (response) {
+      if (response.ok) {
+        return response.json();
+      }
+      throw `${response.status} ${response.statusText}`;
+    })
+    .then(function (data) {
+      console.log(data);
+      allEpisodes = data;
+
+      createCardsWrapper();
+      dropDownMenu();
+      makeEpisodes(allEpisodes);
+      numberOfDisplayedEpisodes(allEpisodes);
+      showFooter();
+    })
+    .catch(function (error) {
+      console.log("An error occurred:", error);
+    });
 }
 window.onload = setup;
 
