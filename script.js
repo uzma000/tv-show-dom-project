@@ -4,6 +4,7 @@ let allCardsDiv = document.createElement("div");
 let bodyEl = document.querySelector("body");
 let dropDown = document.getElementById("drop-down");
 let allEpisodes;
+//level 350 fetch API
 function setup() {
   fetch("https://api.tvmaze.com/shows/22036/episodes")
     .then(function (response) {
