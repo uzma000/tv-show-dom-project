@@ -2,7 +2,7 @@ Body {
   background-color: rgb(87, 80, 80);
   color: whitesmoke;
 }
-h1 {
+/* h1 {
   background-color: rgb(82, 83, 83);
   text-align: center;
   width: 25%;
@@ -50,7 +50,7 @@ h1:hover {
   border: 1px solid whitesmoke;
   border-radius: 10px;
 }
-#selection-form {
+#dropDown-shows {
   color: black;
   text-align: center;
   width: 200px;
@@ -66,11 +66,11 @@ h1:hover {
   margin-left: 578px;
   border-radius: 10px;
 }
-#drop-down {
+#dropDown-episodes {
   color: black;
   text-align: center;
   width: 200px;
   margin-left: 0px;
   border: 1px solid whitesmoke;
   border-radius: 10px;
-}
+} */

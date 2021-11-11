@@ -12,9 +12,10 @@
     <h1>TV Show</h1>
 
     <div id="header">
-      <form id="selection-form">
-        <select id="drop-down"></select>
-      </form>
+      <!-- <form id="selection-form"> -->
+      <select id="dropDown-shows"></select>
+      <select id="dropDown-episodes"></select>
+      <!-- </form> -->
 
       <div id="search-div">
         <input
@@ -26,10 +27,13 @@
       </div>
       <h3 id="numbers">Showing 73/73 Shows.</h3>
     </div>
+    <div id="showsWrapper">
+      <ul id="all-cards"></ul>
+    </div>
 
     <!-- Loads a provided function called getAllEpisodes() which returns all episodes -->
     <script src="episodes.js"></script>
-
+    <script src="shows.js"></script>
     <!-- Loads YOUR javascript code -->
     <script src="script.js"></script>
   </body>
