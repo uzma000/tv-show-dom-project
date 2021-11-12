@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TV Show Project | (Uzma Khan (uzma000))</title>
+
     <link href="style.css" rel="stylesheet" />
     <link rel="icon" href="/favicon.ico" type="image/x-icon" />
   </head>
@@ -14,27 +15,37 @@
     <div id="header">
       <!-- <form id="selection-form"> -->
       <select id="dropDown-shows"></select>
-      <select id="dropDown-episodes"></select>
+      <select id="dropDown-episodes">
+        <option value="selected">For episodes select any show</option>
+      </select>
+
       <!-- </form> -->
 
       <div id="search-div">
-        <input
-          id="searchBar"
-          name="searchBar"
-          placeholder="Search here"
-          type="text"
-        />
+        <input id="searchBar" placeholder="Search here" type="text" />
       </div>
-      <h3 id="numbers">Showing 73/73 Shows.</h3>
+
+      <h3 id="count">Showing 73/73 Shows.</h3>
     </div>
-    <div id="showsWrapper">
+    <div>
       <ul id="all-cards"></ul>
     </div>
 
-    <!-- Loads a provided function called getAllEpisodes() which returns all episodes -->
+    <div>
+      <p id="count"></p>
+    </div>
+
+    <div id="cardsWrapper"></div>
+
+    <footer class="maze-tv-footer">
+      <p>
+        <a href="https://www.tvmaze.com"><em> TVMaze.com </em></a>
+      </p>
+    </footer>
+
     <script src="episodes.js"></script>
     <script src="shows.js"></script>
-    <!-- Loads YOUR javascript code -->
+
     <script src="script.js"></script>
   </body>
 </html>

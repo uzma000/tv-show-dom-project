@@ -17,7 +17,7 @@ window.onload = setup;
 
 // level 400
 function populateEpisodes(showId) {
-  const currentShowUrl = `https://api.tvmaze.com/shows/${showId}/episodes`;
+  let currentShowUrl = `https://api.tvmaze.com/shows/${showId}/episodes`;
   return fetch(currentShowUrl).then(function (response) {
     if (response.ok) {
       return response.json();
@@ -30,11 +30,11 @@ function countShows(search) {
   let countEpisodes = document.getElementById("count");
   let episodeList = allEpisodes.length;
   let searchLength = search.length;
-  dropDownEpisode.innerText = `Showed ${searchLength} / ${episodeList} Episodes.`;
+  countEpisodes.innerText = `Showed ${searchLength} / ${episodeList} Episodes.`;
   return countEpisodes;
 }
 
-function removeShow() {
+function removeCountShow() {
   let countEpisodes = document.getElementById("count");
   countEpisodes.innerHTML = "";
   return countEpisodes;
@@ -55,25 +55,23 @@ function displayEpisodes(episode) {
   if (episodeNumber || seasonNumber) {
     return `S${seasonNumber}E${episodeNumber} - ${episodeName}`;
   } else {
-    return episode.name;
+    return episodeName;
   }
 }
 
-//const newLocal = "input";
 // Search Bar
 
 searchBar.addEventListener("input", (e) => {
   e.preventDefault();
   let searchText = e.target.value.toLowerCase();
-  let filteredShows = numberOfDisplayedEpisodes(searchText, allEpisodes);
-  //numberOfDisplayedEpisodes(filteredShows); // changed
-  // showingEpisodes(filteredShows);
+  let filteredShows = countEpisodes(searchText, allEpisodes);
+
   populateAllCards(filteredShows);
   countShows(filteredShows);
 });
 
 // Episode Counter
-function numberOfDisplayedEpisodes(searchInput, allEpisodes) {
+function countEpisodes(searchInput, allEpisodes) {
   let totalEpisodesLength = allEpisodes.filter((episode) => {
     if (episode.summary != undefined) {
       return (
@@ -94,7 +92,7 @@ function singleShowPopulate(show) {
   // let showId = show.id;
   // let showName = show.name
   let options = document.createElement("option");
-  options.setAttribute("label", show.id);
+  options.setAttribute("value", show.id);
 
   options.innerHTML = show.name;
   return options;
@@ -113,10 +111,10 @@ function differentShowPopulate(allShows) {
 
 // dropDown for show
 dropDownShow.addEventListener("change", (e) => {
-  let showCount = e.target.value;
-  if (showCount === "All-Shows") {
+  let showValue = e.target.value;
+  if (showValue === "All-Shows") {
     populateAllCards(allShows);
-    removeShow();
+    removeCountShow();
     differentEpisodePopulate([
       {
         name: "Selection required for show",
@@ -126,7 +124,7 @@ dropDownShow.addEventListener("change", (e) => {
     searchBar.disabled = true;
     searchBar.Placeholder = "To enable search please select a show";
   } else {
-    populateEpisodes(showCount).then((data) => {
+    populateEpisodes(showValue).then((data) => {
       allEpisodes = data;
 
       populateAllCards(allEpisodes);
@@ -141,7 +139,7 @@ dropDownShow.addEventListener("change", (e) => {
 //for single episode
 function singleEpisodePopulate(episode) {
   let options = document.createElement("option");
-  options.setAttribute("label", episode.id);
+  options.setAttribute("value", episode.id);
   let title = displayEpisodes(episode);
   options.innerHTML = title;
   return options;
@@ -159,16 +157,16 @@ function differentEpisodePopulate(allEpisodes) {
 
 //dropdown for episodes
 dropDownEpisode.addEventListener("change", (e) => {
-  let episodeCount = e.target.value;
-  location.href = `#${episodeCount}`;
-  let value = document.getElementById(episodeCount);
+  let episodeValue = e.target.value;
+  location.href = `#${episodeValue}`;
+  let value = document.getElementById(episodeValue);
   value.classList.add("selectedItem");
   setTimeout(() => {
     value.classList.remove("selectedItem");
   }, 1100);
 });
 
-// Lets create One Card for a show/episode
+//for single Card
 function populateCard(element) {
   let cardList = document.createElement("li");
   let cardTitle = document.createElement("h2");
@@ -178,7 +176,7 @@ function populateCard(element) {
   cardList.setAttribute("id", element.id);
   cardList.setAttribute("class", "single-card");
   cardTitle.setAttribute("class", "card-title");
-  cardTitle.innerHTML = element.name;
+  cardTitle.innerHTML = displayEpisodes(element);
   cardImage.setAttribute("class", "card-picture");
   cardImage.src = element.image ? element.image.medium : "";
   cardImage.alt = `${element.name} cover picture`;
@@ -189,15 +187,19 @@ function populateCard(element) {
   link.target = "_blank";
   link.innerHTML = "Click here to watch";
   cardList.appendChild(cardTitle);
+
   cardList.appendChild(cardImage);
   cardList.appendChild(link);
   cardList.appendChild(pElement);
+
   return cardList;
 }
 // to make cards empty
 function emptyCards(cardElement) {
   cardElement.innerHTML = "";
 }
+
+//for different cards
 function populateAllCards(arr) {
   let cardElement = document.getElementById("all-cards");
   emptyCards(cardElement);
