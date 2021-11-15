@@ -30,10 +30,13 @@ h2:hover {
   font-size: 2.5rem;
   color: tan;
 }
+h3 {
+  margin: 10px;
+}
 
 .single-card {
   background-color: #583527;
-  max-width: 300px;
+  max-width: 250px;
   margin: 15px;
   padding: 1rem;
   border-radius: 10px;
@@ -71,7 +74,7 @@ a:hover {
   background-color: #583527;
   color: black;
   text-align: center;
-  width: 25%;
+  width: 30%;
   margin: auto;
   border: 1px solid black;
   border-radius: 10px;
@@ -82,7 +85,7 @@ a:hover {
   text-align: center;
   width: 80%;
   margin-top: 4px;
-  margin-left: 578px;
+  margin-left: 470px;
   border-radius: 10px;
 }
 
@@ -91,7 +94,7 @@ a:hover {
   color: grey;
   text-align: center;
   width: 200px;
-  margin-left: 975px;
+  margin-left: 800px;
   border: 1px solid black;
   border-radius: 10px;
 }
@@ -101,7 +104,7 @@ a:hover {
   color: grey;
   text-align: center;
   width: 200px;
-  margin-left: 0px;
+  margin-left: 10px;
   border: 1px solid black;
   border-radius: 10px;
 }
