@@ -155,6 +155,8 @@ function differentEpisodePopulate(allEpisodes) {
   });
 }
 
+//make another function. add eventlistener
+
 //dropdown for episodes
 dropDownEpisode.addEventListener("change", (e) => {
   let episodeValue = e.target.value;
@@ -207,4 +209,8 @@ function populateAllCards(arr) {
     let li = populateCard(element);
     cardElement.appendChild(li);
   });
+  cardElement.addEventListener("onClick", (e) => {
+    console.log(e.target);
+  });
 }
+//to make eventListener for card
